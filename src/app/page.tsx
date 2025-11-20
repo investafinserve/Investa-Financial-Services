@@ -1,64 +1,82 @@
+// app/page.tsx
 import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+    <div className="min-h-screen flex flex-col bg-slate-50">
+      {/* Top strip */}
+      <div className="w-full bg-[#173F7F] text-white text-[0.65rem] sm:text-xs font-medium tracking-[0.18em] uppercase text-center py-2">
+        Website Coming Soon
+      </div>
+
+      {/* Header */}
+      <header className="border-b border-slate-200 bg-white">
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6">
+          {/* Logo area */}
+          <div className="flex items-center gap-2">
             <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+              src="/investa-financial-logo.png"
+              alt="Investa Finserve Services logo"
+              width={40}
+              height={40}
+              className="h-9 w-auto sm:h-10"
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+            <div className="leading-tight">
+              <p className="text-sm sm:text-base font-semibold text-[#1077BD]">
+                Investa
+              </p>
+              <p className="text-[0.7rem] sm:text-xs text-slate-700">
+                Financial
+                <br />
+                Services
+              </p>
+            </div>
+          </div>
+
+          {/* Right side of header intentionally empty for now */}
+          <div className="hidden" aria-hidden="true" />
         </div>
+      </header>
+
+      {/* Hero section */}
+      <main className="flex-1">
+        <section className="mx-auto flex max-w-6xl flex-col-reverse gap-8 px-4 py-8 sm:px-6 md:flex-row md:items-center md:py-10 lg:py-12">
+          {/* Left: text */}
+          <div className="w-full md:w-1/2 space-y-4">
+            <div className="space-y-2">
+              <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-[2.1rem] font-semibold leading-snug text-[#1F3152]">
+                Confused by the Market Noise?
+                <br />
+                Simplify Investing. We&apos;ll Guide Your Every Investment –{" "}
+                <span className="text-[#1077BD]">Investa Finserve.</span>
+              </h1>
+            </div>
+
+            <div className="space-y-1 text-xs sm:text-sm text-slate-600">
+              <p>Personalized your Mutual Fund distribution.</p>
+              <p>Start right, grow consistently.</p>
+              <p>Invest directly with Investa Finserve Services.</p>
+            </div>
+
+            <div className="pt-2">
+              <button className="inline-flex items-center justify-center rounded-md bg-[#2F7DDF] px-5 py-2.5 text-xs sm:text-sm font-medium text-white shadow-sm transition hover:bg-[#2568b8] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2F7DDF] focus-visible:ring-offset-2 focus-visible:ring-offset-slate-50">
+                Get Started
+              </button>
+            </div>
+          </div>
+
+          {/* Right: illustration */}
+          <div className="w-full md:w-1/2 flex justify-center">
+            <Image
+              src="/hero-investing.png"
+              alt="People investing illustration"
+              width={480}
+              height={320}
+              className="h-auto w-full max-w-sm md:max-w-md"
+              priority
+            />
+          </div>
+        </section>
       </main>
     </div>
   );
