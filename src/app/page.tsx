@@ -58,10 +58,28 @@ export default function Home() {
               <p>Invest directly with Investa Finserve Services.</p>
             </div>
 
-            <div className="pt-2">
+            {/* Button + call text */}
+            <div className="pt-2 space-y-3">
               <button className="inline-flex items-center justify-center rounded-md bg-[#2F7DDF] px-5 py-2.5 text-xs sm:text-sm font-medium text-white shadow-sm transition hover:bg-[#2568b8] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2F7DDF] focus-visible:ring-offset-2 focus-visible:ring-offset-slate-50">
                 Get Started
               </button>
+
+              {/* ---------- or ---------- */}
+              <div className="flex items-center gap-2 text-[0.7rem] text-slate-500">
+                <span className="flex-1 h-px bg-slate-300" />
+                <span>or</span>
+                <span className="flex-1 h-px bg-slate-300" />
+              </div>
+
+              <p className="text-[0.75rem] text-slate-600">
+                Give a call on{" "}
+                <a
+                  href="tel:+919909111020"
+                  className="font-medium text-[#173F7F] underline-offset-2 hover:underline"
+                >
+                  +91 99091 11020
+                </a>
+              </p>
             </div>
           </div>
 
