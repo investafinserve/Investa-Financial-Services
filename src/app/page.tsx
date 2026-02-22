@@ -1,4 +1,5 @@
 import Image from "next/image";
+import ContactForm from "@/components/ContactForm";
 
 const YOUTUBE_VIDEOS = [
   { id: "5oyjqMCKzL4", title: "Mastering Market Basics" },
@@ -117,40 +118,22 @@ export default function Home() {
               />
 
               {/* Floating badges */}
-              {/* Top Right - Equity */}
-              <div className="absolute top-[8%] -right-2 sm:-right-8 z-30 glass shadow-md sm:shadow-lg px-3 py-2 sm:px-5 sm:py-3 rounded-xl sm:rounded-2xl flex items-center gap-2 sm:gap-3 animate-float-delayed">
-                <span className="text-xl sm:text-3xl drop-shadow-md">📊</span>
-                <span className="text-xs sm:text-sm font-bold text-slate-700 uppercase tracking-wider">Equity</span>
+              {/* Top Right - Debt */}
+              <div className="absolute top-[12%] -right-2 sm:-right-8 z-30 glass shadow-md sm:shadow-lg px-3 py-2 sm:px-5 sm:py-3 rounded-xl sm:rounded-2xl flex items-center gap-2 sm:gap-3 animate-float-delayed">
+                <span className="text-xl sm:text-3xl drop-shadow-md">🏦</span>
+                <span className="text-sm sm:text-base font-bold text-slate-800 tracking-wide">Debt</span>
               </div>
 
-              {/* Middle Right - Secure */}
-              <div className="absolute top-[42%] -right-4 sm:-right-10 z-30 glass shadow-md sm:shadow-lg px-2 py-1.5 sm:px-4 sm:py-2.5 rounded-xl sm:rounded-2xl flex items-center gap-1.5 sm:gap-2 animate-float" style={{ animationDelay: '3s' }}>
-                <span className="text-lg sm:text-2xl drop-shadow-md">🛡️</span>
-                <span className="text-xs sm:text-sm font-black text-slate-700">Secure</span>
+              {/* Middle Left - Mutual Funds */}
+              <div className="absolute top-[42%] -left-3 sm:-left-10 z-30 glass shadow-md sm:shadow-lg px-3 py-2 sm:px-5 sm:py-3 rounded-xl sm:rounded-2xl flex items-center gap-2 sm:gap-3 animate-float" style={{ animationDelay: '1s' }}>
+                <span className="text-xl sm:text-3xl drop-shadow-md">💼</span>
+                <span className="text-sm sm:text-base font-bold text-slate-800 tracking-wide">Mutual Funds</span>
               </div>
 
-              {/* Bottom Right - Market */}
-              <div className="absolute bottom-[12%] right-2 sm:-right-4 z-30 glass shadow-md sm:shadow-lg px-3 py-2 sm:px-4 sm:py-2.5 rounded-xl sm:rounded-2xl flex items-center gap-2 sm:gap-2 animate-float-delayed" style={{ animationDelay: '1.5s' }}>
-                <span className="text-lg sm:text-2xl drop-shadow-md">📈</span>
-                <span className="text-xs sm:text-sm font-bold text-slate-700 tracking-wide">Market</span>
-              </div>
-
-              {/* Top Left - Mutual Funds */}
-              <div className="absolute top-[16%] left-0 sm:-left-6 z-30 glass shadow-md sm:shadow-lg px-3 py-2 sm:px-5 sm:py-2.5 rounded-xl sm:rounded-2xl flex items-center gap-2 sm:gap-3 animate-float" style={{ animationDelay: '2.5s' }}>
-                <span className="text-lg sm:text-2xl drop-shadow-md">💼</span>
-                <span className="text-xs sm:text-sm font-black text-slate-700">Mutual Funds</span>
-              </div>
-
-              {/* Middle Left - Smart Choice */}
-              <div className="absolute top-[52%] -left-3 sm:-left-10 z-30 glass shadow-md sm:shadow-lg px-3 py-2 sm:px-4 sm:py-2 rounded-xl sm:rounded-2xl flex items-center gap-2 sm:gap-3 animate-float-delayed" style={{ animationDelay: '0.5s' }}>
-                <span className="text-lg sm:text-2xl drop-shadow-md">💡</span>
-                <span className="text-xs sm:text-sm font-black text-slate-800">Smart Choice</span>
-              </div>
-
-              {/* Bottom Left - SIPs */}
-              <div className="absolute bottom-[6%] -left-1 sm:-left-8 z-30 glass shadow-md sm:shadow-lg px-3 py-2 sm:px-5 sm:py-3 rounded-xl sm:rounded-2xl flex items-center gap-2 sm:gap-3 animate-float" style={{ animationDelay: '1s' }}>
-                <span className="text-xl sm:text-3xl drop-shadow-md">🌱</span>
-                <span className="text-sm sm:text-base font-black text-slate-800">SIPs</span>
+              {/* Bottom Right - Gold */}
+              <div className="absolute bottom-[16%] right-2 sm:-right-4 z-30 glass shadow-md sm:shadow-lg px-3 py-2 sm:px-5 sm:py-3 rounded-xl sm:rounded-2xl flex items-center gap-2 sm:gap-3 animate-float" style={{ animationDelay: '2.5s' }}>
+                <span className="text-xl sm:text-3xl drop-shadow-md">⚜️</span>
+                <span className="text-sm sm:text-base font-bold text-slate-800 tracking-wide">Gold</span>
               </div>            </div>
           </div>
         </section>
@@ -203,11 +186,17 @@ export default function Home() {
             ))}
           </div>
         </section>
+
+        {/* Contact Form Section */}
+        <ContactForm />
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-slate-200 bg-white/50 mt-8 py-8 text-center text-sm text-slate-600 backdrop-blur-md">
+      <footer className="border-t border-slate-200 bg-white/50 mt-8 py-8 flex flex-col items-center justify-center gap-1.5 text-center text-sm text-slate-600 backdrop-blur-md">
         <p className="font-medium">© {new Date().getFullYear()} Investa Finserve Services. All rights reserved.</p>
+        <p className="text-[10px] text-slate-500 font-medium">
+          Designed and developed by <span className="font-bold text-slate-800 text-[11px]">Ascenties</span>.
+        </p>
       </footer>
     </div>
   );
