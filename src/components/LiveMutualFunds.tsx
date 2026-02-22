@@ -39,7 +39,6 @@ interface FundData {
 export default function LiveMutualFunds() {
     const [activeList, setActiveList] = useState<FundListType>("Top Performing");
     const [activeTimeframe, setActiveTimeframe] = useState<Timeframe>("3Y"); // Default to 3Y to show annualized strength
-    const [refreshCountdown, setRefreshCountdown] = useState(60);
 
     const [fundsData, setFundsData] = useState<FundData[]>(
         ALL_DISTINCT_FUNDS.map((f) => ({
@@ -120,27 +119,9 @@ export default function LiveMutualFunds() {
             }
         };
 
-        const fetchAllFunds = () => {
-            ALL_DISTINCT_FUNDS.forEach((fund) => {
-                fetchFundData(fund.id);
-            });
-        };
-
-        // Initial fetch
-        fetchAllFunds();
-
-        // Auto-refresh timer logic
-        const timerInterval = setInterval(() => {
-            setRefreshCountdown((prev) => {
-                if (prev <= 1) {
-                    fetchAllFunds();
-                    return 60; // Reset timer
-                }
-                return prev - 1;
-            });
-        }, 1000);
-
-        return () => clearInterval(timerInterval);
+        ALL_DISTINCT_FUNDS.forEach((fund) => {
+            fetchFundData(fund.id);
+        });
     }, []);
 
     const activeFundList = activeList === "Popular" ? POPULAR_FUNDS : TOP_PERFORMING_FUNDS;
@@ -150,12 +131,8 @@ export default function LiveMutualFunds() {
     return (
         <section id="curated" className="relative mx-auto max-w-6xl px-4 py-12 sm:px-6 md:py-16 mt-8">
             <div className="text-center space-y-4 mb-8">
-                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-100/80 text-emerald-800 text-xs font-bold tracking-widest uppercase mb-2 shadow-sm border border-emerald-200">
-                    <span className="relative flex h-2 w-2">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                        <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-                    </span>
-                    Live Market Data • Updates in {refreshCountdown}s
+                <div className="inline-block px-4 py-1.5 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold tracking-widest uppercase mb-2 shadow-sm border border-emerald-200">
+                    Live Market Data
                 </div>
                 <h2 className="text-3xl md:text-5xl font-extrabold text-slate-900 leading-tight">
                     Curated <span className="text-gradient">Mutual Funds</span>

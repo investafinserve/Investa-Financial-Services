@@ -1,6 +1,7 @@
 import Image from "next/image";
 import ContactForm from "@/components/ContactForm";
 import LiveMutualFunds from "@/components/LiveMutualFunds";
+import FinancialCalculators from "@/components/FinancialCalculators";
 
 const YOUTUBE_VIDEOS = [
   { id: "5oyjqMCKzL4", title: "Mastering Market Basics" },
@@ -13,7 +14,7 @@ const YOUTUBE_VIDEOS = [
 
 export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col font-sans">
+    <div id="home" className="min-h-screen flex flex-col font-sans">
       {/* Top strip */}
       <div className="w-full bg-gradient-to-r from-blue-900 via-indigo-800 to-purple-900 border-b border-white/10 text-blue-50 text-[0.65rem] sm:text-xs font-semibold tracking-[0.2em] py-2.5 relative overflow-hidden group">
         <div className="absolute inset-0 bg-white/10 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-in-out"></div>
@@ -26,7 +27,7 @@ export default function Home() {
       <header className="sticky top-0 z-50 backdrop-blur-xl bg-white/70 border-b border-slate-200 shadow-sm transition-all duration-300">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
           {/* Logo area */}
-          <div className="flex items-center gap-3 group cursor-pointer">
+          <a href="#home" className="flex items-center gap-3 group cursor-pointer">
             <div className="relative">
               <div className="absolute -inset-2 bg-blue-500/20 rounded-full blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <Image
@@ -45,11 +46,12 @@ export default function Home() {
                 Financial Services
               </p>
             </div>
-          </div>
+          </a>
 
           <div className="hidden md:flex items-center gap-6 text-sm font-medium text-slate-600">
-            <a href="#hero" className="hover:text-blue-600 transition-colors">Home</a>
+            <a href="#home" className="hover:text-blue-600 transition-colors">Home</a>
             <a href="#curated" className="hover:text-blue-600 transition-colors">Curated Funds</a>
+            <a href="#calculators" className="hover:text-blue-600 transition-colors">Calculators</a>
             <a href="#learn" className="hover:text-blue-600 transition-colors">Learn</a>
             <a href="tel:+919909111020" className="px-5 py-2.5 rounded-full border border-blue-200 text-blue-700 font-semibold hover:bg-blue-50 transition-all shadow-sm">
               Contact Us
@@ -60,7 +62,7 @@ export default function Home() {
 
       {/* Hero section */}
       <main className="flex-1">
-        <section id="hero" className="relative mx-auto flex max-w-6xl flex-col-reverse gap-8 px-4 py-8 sm:px-6 md:flex-row md:items-center md:py-12 lg:py-16">
+        <section className="relative mx-auto flex max-w-6xl flex-col-reverse gap-8 px-4 py-8 sm:px-6 md:flex-row md:items-center md:py-12 lg:py-16">
           {/* Left: text */}
           <div className="w-full md:w-1/2 space-y-5 relative z-10">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-xs font-bold text-blue-700 mb-1 shadow-sm">
@@ -147,6 +149,9 @@ export default function Home() {
         {/* Live Mutual Funds Tracker Section */}
         <LiveMutualFunds />
 
+        {/* Financial Calculators Section */}
+        <FinancialCalculators />
+
         {/* Videos Section */}
         <section id="learn" className="relative mx-auto max-w-6xl px-4 py-12 sm:px-6 md:py-16">
           <div className="text-center space-y-4 mb-10">
@@ -207,6 +212,23 @@ export default function Home() {
           Designed and developed by <span className="font-bold text-slate-800 text-[11px]">Ascenties</span>.
         </p>
       </footer>
+
+      {/* Global Floating WhatsApp Widget */}
+      <a
+        href="https://wa.me/919909111020?text=Hi%20Investa%2C%20I%20visited%20Investa%20Finserve%20and%20would%20like%20to%20know%20more%20about%20your%20services."
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-6 right-6 z-[100] bg-[#25D366] text-white p-3.5 sm:p-4 rounded-full shadow-[0_8px_30px_rgba(37,211,102,0.4)] hover:scale-110 hover:shadow-[0_12px_40px_rgba(37,211,102,0.6)] transition-all duration-300 flex items-center justify-center group"
+        aria-label="Chat with us on WhatsApp"
+      >
+        {/* Subtle pulse ring behind the button */}
+        <div className="absolute inset-0 rounded-full border-2 border-[#25D366] animate-ping opacity-20"></div>
+
+        <svg className="w-7 h-7 sm:w-8 sm:h-8 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.888-.788-1.489-1.761-1.663-2.062-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z" />
+        </svg>
+      </a>
+
     </div>
   );
 }
