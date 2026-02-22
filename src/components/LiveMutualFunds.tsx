@@ -148,7 +148,7 @@ export default function LiveMutualFunds() {
     const displayedFunds = activeFundList.map((fundRef) => fundsData.find((f) => f.id === fundRef.id)!);
 
     return (
-        <section className="relative mx-auto max-w-6xl px-4 py-12 sm:px-6 md:py-16 mt-8">
+        <section id="curated" className="relative mx-auto max-w-6xl px-4 py-12 sm:px-6 md:py-16 mt-8">
             <div className="text-center space-y-4 mb-8">
                 <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-100/80 text-emerald-800 text-xs font-bold tracking-widest uppercase mb-2 shadow-sm border border-emerald-200">
                     <span className="relative flex h-2 w-2">

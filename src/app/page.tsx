@@ -49,6 +49,7 @@ export default function Home() {
 
           <div className="hidden md:flex items-center gap-6 text-sm font-medium text-slate-600">
             <a href="#hero" className="hover:text-blue-600 transition-colors">Home</a>
+            <a href="#curated" className="hover:text-blue-600 transition-colors">Curated Funds</a>
             <a href="#learn" className="hover:text-blue-600 transition-colors">Learn</a>
             <a href="tel:+919909111020" className="px-5 py-2.5 rounded-full border border-blue-200 text-blue-700 font-semibold hover:bg-blue-50 transition-all shadow-sm">
               Contact Us
