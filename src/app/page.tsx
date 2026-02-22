@@ -1,5 +1,6 @@
 import Image from "next/image";
 import ContactForm from "@/components/ContactForm";
+import LiveMutualFunds from "@/components/LiveMutualFunds";
 
 const YOUTUBE_VIDEOS = [
   { id: "5oyjqMCKzL4", title: "Mastering Market Basics" },
@@ -141,6 +142,9 @@ export default function Home() {
               </div>            </div>
           </div>
         </section>
+
+        {/* Live Mutual Funds Tracker Section */}
+        <LiveMutualFunds />
 
         {/* Videos Section */}
         <section id="learn" className="relative mx-auto max-w-6xl px-4 py-12 sm:px-6 md:py-16">
