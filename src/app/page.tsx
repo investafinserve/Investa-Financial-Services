@@ -7,6 +7,7 @@ const YOUTUBE_VIDEOS = [
   { id: "HuhwNF-jBcY", title: "The Power of Compounding" },
   { id: "xC47QG7HndM", title: "Smart Asset Allocation" },
   { id: "J98sArifIT4", title: "Start Your Investment Journey" },
+  { id: "4x3Idnz7RyU", title: "Importance of Starting Early" },
 ];
 
 export default function Home() {
@@ -82,9 +83,12 @@ export default function Home() {
 
             {/* Buttons */}
             <div className="pt-5 sm:flex sm:items-center gap-5 space-y-4 sm:space-y-0">
-              <button className="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 text-base font-bold text-white shadow-[0_10px_20px_-10px_rgba(37,99,235,0.5)] hover:shadow-[0_15px_25px_-10px_rgba(37,99,235,0.7)] hover:-translate-y-1 transition-all duration-300">
+              <a
+                href="#contact"
+                className="block text-center w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 text-base font-bold text-white shadow-[0_10px_20px_-10px_rgba(37,99,235,0.5)] hover:shadow-[0_15px_25px_-10px_rgba(37,99,235,0.7)] hover:-translate-y-1 transition-all duration-300 scroll-smooth"
+              >
                 Start Investing Now
-              </button>
+              </a>
 
               <div className="flex items-center justify-center gap-3 text-slate-500 font-medium">
                 <span className="text-sm">or call</span>
@@ -156,7 +160,7 @@ export default function Home() {
                 href={`https://youtu.be/${video.id}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`group glass-card rounded-3xl overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_25px_50px_-12px_rgba(37,99,235,0.25)] flex flex-col ${idx === 3 ? 'lg:col-span-1 lg:col-start-2' : ''} ${idx === 4 ? 'lg:col-span-1 lg:col-start-3 sm:col-span-2 lg:col-span-1' : ''}`}
+                className="group glass-card rounded-3xl overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_25px_50px_-12px_rgba(37,99,235,0.25)] flex flex-col"
               >
                 <div className="relative aspect-video w-full overflow-hidden bg-slate-100">
                   <Image
