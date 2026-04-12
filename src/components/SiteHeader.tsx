@@ -33,9 +33,6 @@ export default function SiteHeader() {
           <Link href="/" className="hover:text-blue-600 transition-colors">
             Home
           </Link>
-          <Link href="/blog" className="hover:text-blue-600 transition-colors font-semibold text-blue-700/90">
-            Blog
-          </Link>
           <Link href="/#curated" className="hover:text-blue-600 transition-colors hidden sm:inline">
             Curated Funds
           </Link>
@@ -44,6 +41,9 @@ export default function SiteHeader() {
           </Link>
           <Link href="/#learn" className="hover:text-blue-600 transition-colors hidden md:inline">
             Learn
+          </Link>
+          <Link href="/#blog" className="hover:text-blue-600 transition-colors">
+            Blog
           </Link>
           <a
             href="tel:+919909111020"

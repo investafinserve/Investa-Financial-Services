@@ -1,6 +1,8 @@
 "use client";
 
+import Link from "next/link";
 import { useState, useEffect } from "react";
+import { computeReturnsFromNavSeries } from "@/lib/mfapi/compute";
 
 // Curated Lists of Funds
 const POPULAR_FUNDS = [
@@ -60,51 +62,13 @@ export default function LiveMutualFunds() {
                 const data = json.data;
                 if (!data || data.length === 0) throw new Error("No data returned");
 
-                // Today's NAV is the first item
-                const latestNav = parseFloat(data[0].nav);
-                const latestDateStr = data[0].date; // "DD-MM-YYYY"
-
-                const parts = latestDateStr.split("-");
-                const latestDate = new Date(parseInt(parts[2]), parseInt(parts[1]) - 1, parseInt(parts[0]));
-
-                const calculateReturnForYears = (years: number) => {
-                    const targetDate = new Date(latestDate.getFullYear() - years, latestDate.getMonth(), latestDate.getDate());
-                    let oldNavRaw = null;
-                    let smallestDiff = Infinity;
-
-                    for (const entry of data) {
-                        const eParts = entry.date.split("-");
-                        const eDate = new Date(parseInt(eParts[2]), parseInt(eParts[1]) - 1, parseInt(eParts[0]));
-
-                        const diffDays = Math.abs((eDate.getTime() - targetDate.getTime()) / (1000 * 3600 * 24));
-
-                        if (diffDays < smallestDiff && diffDays <= 12) { // 12-day window for long weekends/holidays
-                            smallestDiff = diffDays;
-                            oldNavRaw = parseFloat(entry.nav);
-                        }
-                    }
-
-                    if (oldNavRaw) {
-                        if (years === 1) {
-                            return ((latestNav - oldNavRaw) / oldNavRaw) * 100; // Absolute return for 1 year
-                        } else {
-                            return (Math.pow(latestNav / oldNavRaw, 1 / years) - 1) * 100; // CAGR for >1 year
-                        }
-                    }
-                    return null; // Fund might not be old enough for this timeframe
-                };
-
-                const computedReturns = {
-                    "1Y": calculateReturnForYears(1),
-                    "3Y": calculateReturnForYears(3),
-                    "5Y": calculateReturnForYears(5),
-                    "10Y": calculateReturnForYears(10),
-                };
+                const { latestNav, returns } = computeReturnsFromNavSeries(data);
+                if (!Number.isFinite(latestNav)) throw new Error("Invalid NAV");
 
                 setFundsData((prev) =>
                     prev.map((f) =>
                         f.id === fundId
-                            ? { ...f, currentNav: latestNav, returns: computedReturns, isLoading: false }
+                            ? { ...f, currentNav: latestNav, returns, isLoading: false }
                             : f
                     )
                 );
@@ -184,9 +148,11 @@ export default function LiveMutualFunds() {
                     const currentReturn = fund.returns[activeTimeframe];
 
                     return (
-                        <div
+                        <Link
                             key={fund.id}
-                            className="glass rounded-2xl p-5 border border-white/60 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 relative overflow-hidden group flex-shrink-0"
+                            href={`/funds/${fund.id}`}
+                            className="glass rounded-2xl p-5 border border-white/60 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 relative overflow-hidden group flex-shrink-0 block text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/40"
+                            aria-label={`View NAV and returns for ${fund.name}`}
                         >
                             {/* Soft background glow based on positive return pattern */}
                             <div className="absolute -right-6 -top-6 w-24 h-24 bg-emerald-100 rounded-full blur-2xl opacity-50 group-hover:opacity-100 transition-opacity"></div>
@@ -234,7 +200,7 @@ export default function LiveMutualFunds() {
                                     </div>
                                 )}
                             </div>
-                        </div>
+                        </Link>
                     );
                 })}
             </div>

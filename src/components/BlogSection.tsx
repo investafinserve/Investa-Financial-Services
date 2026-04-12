@@ -7,7 +7,10 @@ export default async function BlogSection() {
   if (posts.length === 0) return null;
 
   return (
-    <section id="blog" className="relative mx-auto max-w-6xl px-4 py-12 sm:px-6 md:py-16">
+    <section
+      id="blog"
+      className="relative mx-auto max-w-6xl px-4 py-12 sm:px-6 md:py-16 scroll-mt-24 md:scroll-mt-28"
+    >
       <div className="text-center space-y-4 mb-10">
         <h2 className="text-3xl md:text-5xl font-extrabold text-slate-900 leading-tight">
           Insights & <span className="text-gradient">Articles</span>
