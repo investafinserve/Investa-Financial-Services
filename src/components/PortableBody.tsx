@@ -33,13 +33,18 @@ const components: PortableTextComponents = {
     },
   },
   block: {
-    h2: ({ children }) => (
-      <h2 className="text-2xl sm:text-3xl font-extrabold mt-12 mb-4 text-slate-900 tracking-tight">
+    h2: ({ children, value }) => (
+      <h2
+        id={value._key}
+        className="text-2xl sm:text-3xl font-extrabold mt-12 mb-4 text-slate-900 tracking-tight scroll-mt-28"
+      >
         {children}
       </h2>
     ),
-    h3: ({ children }) => (
-      <h3 className="text-xl font-bold mt-10 mb-3 text-slate-900">{children}</h3>
+    h3: ({ children, value }) => (
+      <h3 id={value._key} className="text-xl font-bold mt-10 mb-3 text-slate-900 scroll-mt-28">
+        {children}
+      </h3>
     ),
     normal: ({ children }) => <p className="mb-4 leading-relaxed text-slate-700 text-base">{children}</p>,
     blockquote: ({ children }) => (

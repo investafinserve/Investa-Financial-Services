@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import FundNavHistory from "@/components/FundNavHistory";
+import { SITE_KEYWORDS } from "@/lib/seo";
 import { isCuratedFundCode } from "@/lib/curated-funds";
 import { getCuratedFundMfapiCached } from "@/lib/funds/get-curated-fund-mfapi";
 import type { MfapiTimeframe } from "@/lib/mfapi/compute";
@@ -25,19 +26,22 @@ function Row({ label, value }: { label: string; value?: string | number | null }
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { code } = await params;
   const n = Number.parseInt(code, 10);
-  if (!isCuratedFundCode(n)) return { title: "Fund | Investa Finserve" };
+  const fundKeywords = ["mutual fund NAV", "MF scheme", "fund performance", ...SITE_KEYWORDS];
+  if (!isCuratedFundCode(n)) return { title: "Fund", keywords: fundKeywords };
   try {
     const r = await fetch(`https://api.mfapi.in/mf/${n}`, { next: { revalidate: 3600 } });
-    if (!r.ok) return { title: "Fund | Investa Finserve" };
+    if (!r.ok) return { title: "Fund", keywords: fundKeywords };
     const j = (await r.json()) as { meta?: { scheme_name?: string; scheme_category?: string } };
     const name = j.meta?.scheme_name ?? "Fund";
     const cat = j.meta?.scheme_category;
+    const desc = cat ? `${name} — ${cat}. Live NAV and performance snapshot on Investa Finserve.` : `${name} — live NAV and performance snapshot.`;
     return {
-      title: `${name} | Investa Finserve`,
-      description: cat ? `${cat} · Live NAV and performance snapshot.` : "Live NAV and performance snapshot.",
+      title: name,
+      description: desc,
+      keywords: Array.from(new Set([...(cat ? [cat] : []), ...fundKeywords])),
     };
   } catch {
-    return { title: "Fund | Investa Finserve" };
+    return { title: "Fund", keywords: fundKeywords };
   }
 }
 

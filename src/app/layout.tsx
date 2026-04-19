@@ -2,6 +2,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Poppins } from "next/font/google";
+import { getRootMetadata } from "@/lib/seo";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -9,11 +10,7 @@ const poppins = Poppins({
   variable: "--font-poppins",
 });
 
-export const metadata: Metadata = {
-  title: "Investa Finserve Services – Coming Soon",
-  description:
-    "Confused by the market noise? Simplify investing with Investa Finserve Services.",
-};
+export const metadata: Metadata = getRootMetadata();
 
 export default function RootLayout({
   children,

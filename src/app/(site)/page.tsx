@@ -1,5 +1,24 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import ContactForm from "@/components/ContactForm";
+import { SITE_DESCRIPTION, SITE_KEYWORDS, SITE_NAME } from "@/lib/seo";
+
+export const metadata: Metadata = {
+  title: "Mutual Funds, SIP & Financial Growth",
+  description: SITE_DESCRIPTION,
+  keywords: SITE_KEYWORDS,
+  openGraph: {
+    title: `${SITE_NAME} | Mutual Funds, SIP & Financial Planning`,
+    description: SITE_DESCRIPTION,
+    url: "/",
+    type: "website",
+  },
+  twitter: {
+    title: `${SITE_NAME} | Mutual Funds, SIP & Financial Planning`,
+    description: SITE_DESCRIPTION,
+  },
+  alternates: { canonical: "/" },
+};
 import LiveMutualFunds from "@/components/LiveMutualFunds";
 import FinancialCalculators from "@/components/FinancialCalculators";
 import BlogSection from "@/components/BlogSection";

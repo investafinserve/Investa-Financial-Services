@@ -1,9 +1,9 @@
 import Link from "next/link";
-import { getPostsForHome } from "@/sanity/lib/fetch";
+import { getPostsForHomeWithTotal } from "@/sanity/lib/fetch";
 import BlogCard from "./BlogCard";
 
 export default async function BlogSection() {
-  const posts = await getPostsForHome();
+  const { posts, total } = await getPostsForHomeWithTotal();
   if (posts.length === 0) return null;
 
   return (
@@ -18,10 +18,17 @@ export default async function BlogSection() {
         <p className="text-slate-600 max-w-2xl mx-auto text-sm md:text-base font-medium">
           Practical ideas on mutual funds, goal-based investing, and building wealth—written for young investors.
         </p>
+        <p className="text-sm font-semibold text-slate-700">
+          <span className="tabular-nums">{total}</span> article{total === 1 ? "" : "s"}{" "}
+          <span className="text-slate-500 font-medium">
+            · showing the latest {posts.length}
+            {total > posts.length ? ` of ${total}` : ""}
+          </span>
+        </p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-        {posts.slice(0, 4).map((post, i) => (
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-5xl mx-auto">
+        {posts.map((post, i) => (
           <BlogCard key={post._id} post={post} priority={i < 2} />
         ))}
       </div>

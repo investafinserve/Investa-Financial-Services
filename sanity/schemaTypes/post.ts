@@ -37,6 +37,14 @@ export const post = defineType({
           type: "string",
           title: "Alternative text",
           description: "Describe the image for accessibility and SEO.",
+          validation: (Rule) =>
+            Rule.custom((alt, ctx) => {
+              const parent = ctx.parent as { asset?: unknown } | undefined;
+              if (parent?.asset && (!alt || String(alt).trim() === "")) {
+                return "Add alternative text when using a cover image.";
+              }
+              return true;
+            }),
         }),
       ],
     }),
