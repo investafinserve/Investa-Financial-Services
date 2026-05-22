@@ -9,6 +9,7 @@ export const SITE_KEYWORDS = [
   "Investa",
   "Who is Investa",
   "Samir Shah",
+  "Sanjeeta Shah",
   "mutual funds",
   "mutual fund investment",
   "SIP",

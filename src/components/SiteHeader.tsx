@@ -7,6 +7,8 @@ import { useCallback, useEffect, useId, useState } from "react";
 
 const NAV_LINKS = [
   { href: "/", label: "Home" },
+  { href: "/about", label: "About Us" },
+  { href: "/faqs", label: "FAQs" },
   { href: "/#curated", label: "Curated Funds" },
   { href: "/#calculators", label: "Calculators" },
   { href: "/#learn", label: "Learn" },

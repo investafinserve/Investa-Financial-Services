@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import BlogSection from "@/components/BlogSection";
 import ContactForm from "@/components/ContactForm";
+import FinancialCalculators from "@/components/FinancialCalculators";
+import HomeFaqTeaser from "@/components/HomeFaqTeaser";
+import LiveMutualFunds from "@/components/LiveMutualFunds";
 import { SITE_DESCRIPTION, SITE_KEYWORDS, SITE_NAME } from "@/lib/seo";
 
 export const metadata: Metadata = {
@@ -19,9 +23,6 @@ export const metadata: Metadata = {
   },
   alternates: { canonical: "/" },
 };
-import LiveMutualFunds from "@/components/LiveMutualFunds";
-import FinancialCalculators from "@/components/FinancialCalculators";
-import BlogSection from "@/components/BlogSection";
 
 const YOUTUBE_VIDEOS = [
   { id: "5oyjqMCKzL4", title: "Mastering Market Basics" },
@@ -179,6 +180,8 @@ export default function Home() {
         </section>
 
         <BlogSection />
+
+        <HomeFaqTeaser />
 
         <ContactForm />
       </main>
